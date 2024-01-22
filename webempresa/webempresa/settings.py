@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     "blog.apps.BlogConfig",
     "core",
+    "social.apps.SocialConfig",
     # ServicesConfig
     # compiguracion extendida para el nombre de la aplicacion en el panel
     "services.apps.ServicesConfig", 
