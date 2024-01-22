@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    "blog",
     "core",
     # ServicesConfig
     # compiguracion extendida para el nombre de la aplicacion en el panel
