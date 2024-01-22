@@ -27,6 +27,8 @@ urlpatterns = [
     path('', include('core.urls')),
     # app de services
     path('services/', include('services.urls')),
+    # app de blog
+    path('blog/', include('blog.urls')),
 ]
 
 if settings.DEBUG:
