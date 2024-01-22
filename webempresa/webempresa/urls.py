@@ -20,10 +20,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    # app del admin
     path("admin/", admin.site.urls),
     
-    # app del admin
-    path('', include('core.urls'))
+    # app del core
+    path('', include('core.urls')),
+    # app de services
+    path('services/', include('services.urls')),
 ]
 
 if settings.DEBUG:
