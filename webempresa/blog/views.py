@@ -10,5 +10,4 @@ def blog(request):
 
 def category(request, category_id):
     category = get_object_or_404(Category, id=category_id) #filtro buscar
-    posts = Post.objects.filter(categories=category)
-    return render(request, "blog/category.html", {'posts':posts, 'posts':posts})
+    return render(request, "blog/category.html", { 'category':category })
