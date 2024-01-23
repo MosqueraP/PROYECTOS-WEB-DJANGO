@@ -18,8 +18,9 @@
             </h2>
             <!-- Formulario de contacto -->
             {% if 'ok' in request.GET %}
-            <p><b>Su mensajae ha sido enviado correctamente, reponderemos en breve.</b></p>
-          {% endif %}
+              <p><b>Su mensajae ha sido enviado correctamente, reponderemos en breve.</b></p>      
+            {% endif %}
+
           <form action="" method="post">
             {% csrf_token %}
                 <div class="form-group">
