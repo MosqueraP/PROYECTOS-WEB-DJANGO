@@ -151,3 +151,13 @@ CKEDITOR_CONFIGS = {
         ]
     }
 }
+
+# EMAIL CONFIG
+# https://mailtrap.io/inboxes/2570587/messages
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mailtrap.io'  # Cambiado de 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '4a2d6fe0859d4d'
+EMAIL_HOST_PASSWORD = '********07ae'
+EMAIL_PORT = 2525  # Cambiado de '2525' (número entero en lugar de cadena)
+EMAIL_USE_TLS = False  # Cambiado a False
+EMAIL_USE_SSL = False  # Cambiado a False
