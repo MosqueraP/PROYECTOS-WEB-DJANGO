@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "blog.apps.BlogConfig",
-    "core", 
-    "pages.apps.PagesConfig", 
+    "core",
     # ServicesConfig
     # compiguracion extendida para el nombre de la aplicacion en el panel
     "services.apps.ServicesConfig", 
@@ -71,6 +70,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "social.processors.ctx_contex",
             ],
         },
     },
