@@ -44,9 +44,17 @@
                 </div>
             </form> -->
             <!-- Fin formulario de contacto -->
-            <table>
-              {{ form.as_table }}
-            </table>
+            {% if 'ok' in request.GET %}
+              <P><b>Su mensajae ha sido enviado correctamente, reponderemos en breve.</b></P>
+            {% endif %}
+            <form action="" method="post">
+              {% csrf_token %}
+              <table>
+                {{ form.as_table }}
+              </table>
+              <button type="submit">Enviar</button>
+              <!-- {{ request.POST }} -->
+            </form>
           </div>
         </div>
       </div>
