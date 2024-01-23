@@ -31,6 +31,8 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     # app de pages
     path('page/', include('pages.urls')),
+    # app de contact
+    path('contact/', include('contact.urls')),
 ]
 
 if settings.DEBUG:
