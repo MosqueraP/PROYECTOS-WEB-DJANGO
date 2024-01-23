@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "blog.apps.BlogConfig",
-    "core",
+    "core", 
+    "pages.apps.PagesConfig", 
     # ServicesConfig
     # compiguracion extendida para el nombre de la aplicacion en el panel
     "services.apps.ServicesConfig", 
+    "social", 
 ]
 
 MIDDLEWARE = [
