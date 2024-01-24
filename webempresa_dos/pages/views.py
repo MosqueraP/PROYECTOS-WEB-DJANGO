@@ -3,7 +3,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse, reverse_lazy
 from pages.models import Page
-from .forms import PageForm
+from pages.forms import PageForm 
 
 # Create your views here.
 
@@ -18,7 +18,7 @@ class PageDetailView(DetailView):
 # Vista encargada de crear paginas
 class PageCreateView(CreateView):
     model = Page
-    fields = ['title', 'content', 'order'] # campos a llenar y crear paginas
+    form_class = PageForm # Viene con con los campos fields = ['title', 'content', 'order']
     success_url = reverse_lazy('pages:pages')
 
 # Actualizar o editar paginas
