@@ -1,7 +1,7 @@
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from pages.models import Page
 
 # Create your views here.
@@ -18,5 +18,4 @@ class PageDetailView(DetailView):
 class PageCreateView(CreateView):
     model = Page
     fields = ['title', 'content', 'order'] # campos a llenar
-    def get_success_url(self):
-        return reverse('pages:pages')
+    success_url = reverse_lazy('pages:pages')
