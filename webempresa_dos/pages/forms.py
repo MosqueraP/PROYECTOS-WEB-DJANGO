@@ -1,8 +1,8 @@
 from django import forms
 from .models import Page
 
+# Formulario para modelos con campos de la base de datos
 class PageForm(forms.ModelForm):
-
     class Meta:
         model = Page
         fields = ['title', 'content', 'order']
