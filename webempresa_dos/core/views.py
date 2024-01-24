@@ -1,7 +1,10 @@
+from django.views.generic.base import TemplateView
+
 from django.shortcuts import render
 
-def home(request):
-    return render(request, "core/home.html")
+# Vista encarda de mostrar solo un template
+class HomePageView(TemplateView):
+    template_name = "core/home.html"
 
-def sample(request):
-    return render(request, "core/sample.html")
+class SampleView(TemplateView):
+    template_name = "core/sample.html"
