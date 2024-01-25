@@ -1,4 +1,4 @@
-from typing import Any
+from registration.forms import ProfileForm
 from django.db.models.base import Model as Model
 from django.db.models.query import QuerySet
 from registration.forms import UserCreationFormWithEmail
@@ -31,10 +31,10 @@ class SignUpView(CreateView):
         form.fields['password2'].widget = forms.PasswordInput(attrs={'class': 'form-control mb-2', 'placeholder':'Repite la contraseña'})
         # form.fields['username'].label = '' #quita las label
         return form
+    
 @method_decorator(login_required, name='dispatch')
 class ProfileUpdate(UpdateView):
-    model = Profile
-    fields = ['avatar', 'bio', 'link']
+    form_class = ProfileForm
     success_url = reverse_lazy('profile')
     template_name = 'registration/profile_form.html'
 
