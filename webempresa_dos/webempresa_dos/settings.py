@@ -124,6 +124,7 @@ STATIC_URL = "static/"
 # Autth redirect
 # LOGIN_REDIRECT_URL = 'home' # redirecciona a la pagina de inicio despues de loguiarme
 LOGIN_REDIRECT_URL = 'pages:pages' # redireccion a lista de paginas
+LOGOUT_REDIRECT_URL = 'home'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
