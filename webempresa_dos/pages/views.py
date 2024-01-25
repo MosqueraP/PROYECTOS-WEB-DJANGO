@@ -37,7 +37,7 @@ class PageCreateView(StaffRequiredMixin, CreateView):
 
 # Actualizar o editar paginas
 
-class PageUpdate(UpdateView):
+class PageUpdate(StaffRequiredMixin, UpdateView):
     model = Page
     form_class = PageForm
     template_name_suffix = '_update_form'
@@ -47,6 +47,6 @@ class PageUpdate(UpdateView):
     
 
 
-class PageDelete(DeleteView):
+class PageDelete(StaffRequiredMixin, DeleteView):
     model = Page
     success_url = reverse_lazy('pages:pages')
