@@ -1,3 +1,4 @@
+from typing import Any
 from django import forms
 from django.contrib.auth.forms import UserCreationForm # formulario generico
 from django.contrib.auth.models import User
@@ -11,3 +12,10 @@ class UserCreationFormWithEmail(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2')
 
+    # validacion si email existe para no duplicidad
+    def clean_email(self):
+            email= self.cleaned_data.get("email")
+            if User.objects.filter(email=email).exists():
+                raise forms.ValidationError('El email ya está registrado, prueba con otro')
+            return email
+            
