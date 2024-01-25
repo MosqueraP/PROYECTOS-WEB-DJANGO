@@ -29,14 +29,15 @@ class PageDetailView(DetailView):
     model = Page
 
 # Vista encargada de crear paginas
-class PageCreateView(StaffRequiredMixin, CreateView):
+@method_decorator(staff_member_required, name='dispatch')
+class PageCreateView(CreateView):
     model = Page
     form_class = PageForm # Viene con con los campos fields = ['title', 'content', 'order']
     success_url = reverse_lazy('pages:pages')
 
 # Actualizar o editar paginas
-
-class PageUpdate(StaffRequiredMixin, UpdateView):
+@method_decorator(staff_member_required, name='dispatch')
+class PageUpdate(UpdateView):
     model = Page
     form_class = PageForm
     template_name_suffix = '_update_form'
@@ -45,7 +46,7 @@ class PageUpdate(StaffRequiredMixin, UpdateView):
         return reverse_lazy('pages:update', args=[self.object.id]) + '?ok'
     
 
-
-class PageDelete(StaffRequiredMixin, DeleteView):
+@method_decorator(staff_member_required, name='dispatch')
+class PageDelete(DeleteView):
     model = Page
     success_url = reverse_lazy('pages:pages')
