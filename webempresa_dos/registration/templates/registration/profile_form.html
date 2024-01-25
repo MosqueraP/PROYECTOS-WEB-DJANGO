@@ -10,7 +10,7 @@
         <form action="" method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="row">
-            <!-- Previa del avatar -->
+            <!-- Previa del avatar en funcionamiento  responsivo -->
             <div class="col-md-2">
               {% if request.user.profile.avatar %}  <!-- si hay un del avatar mostar -->
                 <img src="{{request.user.profile.avatar.url}}" class="img-fluid">
