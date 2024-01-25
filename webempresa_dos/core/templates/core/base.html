@@ -42,7 +42,7 @@
               <!-- si estamos logiado autenticados muestra el enlase de salir logout -->
               {% else %}
                 <li class="nav-item">
-                  <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+                  <form id="logout-form" method="post" action="{% url 'logout' %}">
                     {% csrf_token %}
                     <button class="btn btn-link text-secondary" type="submit">Salir</button>
                   </form>
