@@ -7,6 +7,9 @@
     <div class="row mt-3 mb-5">
       <div class="col-md-9 mx-auto">
         <h1>Perfil</h1>
+        <!--  acceder al peril desde oro usuario -->
+        {{ request.user.profile.link }}
+
           <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
               <table>
