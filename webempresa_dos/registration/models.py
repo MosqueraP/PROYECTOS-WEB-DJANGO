@@ -16,14 +16,14 @@ class Profile(models.Model):
     ni distintos ususarios para un mismo permil
     relacion uno a ano '''
     user = models.OneToOneField(User, on_delete = models.CASCADE)
-    avatal = models.ImageField(upload_to='profiles', blank=True, null=True)
-    bio = models.TextField(blank=True, null=True, verbose_name= 'Bibliografia')
+    avatar = models.ImageField(upload_to='profiles', blank=True, null=True)
+    bio = models.TextField(blank=True, null=True, verbose_name= 'Bibiografia')
     link = models.URLField(blank=True, null=True)
     
 
     class Meta:
         verbose_name = ("perfil")
-        verbose_name_plural = ("perfiles")
+        verbose_name_plural = ("perfil")
 
     def __str__(self):
         return self.user

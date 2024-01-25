@@ -1,11 +1,15 @@
+from typing import Any
+from django.db.models.base import Model as Model
+from django.db.models.query import QuerySet
 from registration.forms import UserCreationFormWithEmail
 from django.contrib.auth.forms import UserCreationForm # formulario generico
 from django.views.generic import CreateView, TemplateView
-from django.views.generic.base import TemplateView
+from django.views.generic.edit import UpdateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django import forms
+from registration.models import Profile
 
 # Create your views here.
 
@@ -28,6 +32,13 @@ class SignUpView(CreateView):
         # form.fields['username'].label = '' #quita las label
         return form
 @method_decorator(login_required, name='dispatch')
-class ProfileUpdate(TemplateView):
+class ProfileUpdate(UpdateView):
+    model = Profile
+    fields = ['avatar', 'bio', 'link']
+    success_url = reverse_lazy('profile')
     template_name = 'registration/profile_form.html'
 
+    # recuperar el objeto que se va editar
+    def get_object(self):
+        profile, created = Profile.objects.get_or_create(user=self.request.user)
+        return profile
