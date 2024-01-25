@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "registration", # app de registros de cuentas de usuarios
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -119,6 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
+
+# Autth redirect
+# LOGIN_REDIRECT_URL = 'home' # redirecciona a la pagina de inicio despues de loguiarme
+LOGIN_REDIRECT_URL = 'pages:pages' # redireccion a lista de paginas
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
