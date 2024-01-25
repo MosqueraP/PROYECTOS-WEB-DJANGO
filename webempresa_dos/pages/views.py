@@ -1,6 +1,8 @@
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from pages.models import Page
@@ -13,13 +15,10 @@ class StaffRequiredMixin(object):
     Este mixin requerirá que el usuario sea mienbro del staff para
     para ver los contenidos de la paginas
     '''
+    @method_decorator(staff_member_required)
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_staff:
-            return redirect(reverse_lazy('admin:login'))
         return super(StaffRequiredMixin, self).dispatch(request, *args, **kwargs)
     
-
-
 
 # Vista encargada de ver el listado de paginas
 class PageListView(ListView):
