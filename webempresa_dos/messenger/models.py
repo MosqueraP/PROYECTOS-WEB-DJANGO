@@ -13,6 +13,23 @@ class Message(models.Model):
         ordering = ['created']
 
 
+class ThreadManager(models.Manager):
+    ''''
+    agregar a un manager 
+    '''
+    def find(self, user1, user2):
+        queryset = self.filter(users=user1).filter(users=user2)
+        if len(queryset) > 0:
+            return queryset[0]
+        return None
+    
+    def find_or_create(self, user1, user2):
+        thread = self.find(user1, user2)
+        if thread is None:
+            print("Creando un nuevo hilo...")
+            thread = self.create()  # Crear un nuevo hilo
+            thread.users.add(user1, user2)
+        return thread
 
 class Thread(models.Model):
     '''
@@ -21,6 +38,8 @@ class Thread(models.Model):
     '''
     users = models.ManyToManyField(User, related_name='threads')
     messages = models.ManyToManyField(Message)
+
+    objects = ThreadManager()
 
 def messages_chasged(sender, **kwargs):    
     instance = kwargs.pop('instance', None)
