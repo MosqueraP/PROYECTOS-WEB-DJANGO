@@ -5,9 +5,11 @@ from registration.models import Profile
 
 
 # Create your views here.
+# vista ListView, por defecto debulve toda la informacion de la bd
 class ProfileListView(ListView):
     model = Profile
     template_name = 'profiles/profile_list.html'
+    paginate_by = 3 # paginacion
 
 class ProfileDetailView(DetailView):
     model = Profile
