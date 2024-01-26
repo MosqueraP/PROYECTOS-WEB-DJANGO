@@ -124,7 +124,7 @@ STATIC_URL = "static/"
 
 # Autth redirect
 # LOGIN_REDIRECT_URL = 'home' # redirecciona a la pagina de inicio despues de loguiarme
-LOGIN_REDIRECT_URL = 'pages:pages' # redireccion a lista de paginas
+#LOGIN_REDIRECT_URL = 'pages:pages' # redireccion a lista de paginas, despues logiarse al querer ver el peril avatar ususario
 LOGOUT_REDIRECT_URL = 'home'
 
 # Default primary key field type
@@ -140,3 +140,7 @@ if DEBUG:
 else:
     # Aqui se configura un email para produccion
     pass
+
+# manejo archivos medias/ avatar del perfil 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
