@@ -34,6 +34,6 @@ class Profile(models.Model):
     @receiver(post_save, sender=User) # ejecutar esta señal despues que el usuario se guarde
     def ensure_profile_exists(sender, instance, **kwargs):
         if kwargs.get('created', False):
-            # 
+            #
             Profile.objects.get_or_create(user=instance)
             print('Se acaba de crear un ususario y su perfil enlazado')
