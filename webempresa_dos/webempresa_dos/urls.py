@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from pages.urls import pages_patterns
+from profiles.urls import profiles_patterns
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -27,6 +28,7 @@ urlpatterns = [
     # path del AUTH autenticacion
     path('accounts/', include('django.contrib.auth.urls')), # maneja las urls para autenticacion
     path('accounts/', include('registration.urls')), # maneja las urls registrar
+    path('profiles/', include(profiles_patterns)), #
 ] 
 
 if settings.DEBUG:
