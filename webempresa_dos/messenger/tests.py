@@ -9,6 +9,7 @@ class ThreadTestCase(TestCase):
     def setUp(self):
         self.user1 = User.objects.create_user('user1', None, 'test1234')
         self.user2 = User.objects.create_user('user2', None, 'test1234')
+        self.user3 = User.objects.create_user('user3', None, 'test1234')
         
         self.thread = Thread.objects.create()
 
@@ -35,3 +36,12 @@ class ThreadTestCase(TestCase):
 
         for messaje in self.thread.messages.all():
             print(f'({messaje.user}) dice, {messaje.content}')
+
+    # comprobar si un usuario que no esixte en el hilo puede añadir mensaje
+    def test_add_messaje_from_user_not_in_thread(self):
+        self.thread.users.add(self.user1, self.user2)
+        messaje1 = Message.objects.create(user=self.user1, content='Muy buenas')
+        messaje2 = Message.objects.create(user=self.user2, content='Muy buenas')
+        messaje3 = Message.objects.create(user=self.user3, content='Soy un espia')
+        self.thread.messages.add(messaje1, messaje2, messaje3)
+        self.assertEqual(len(self.thread.messages.all()), 2)
