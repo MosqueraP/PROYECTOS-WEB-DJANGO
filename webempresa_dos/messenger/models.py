@@ -38,8 +38,13 @@ class Thread(models.Model):
     '''
     users = models.ManyToManyField(User, related_name='threads')
     messages = models.ManyToManyField(Message)
+    updated = models.DateTimeField(auto_now=True)
 
     objects = ThreadManager()
+
+    class Meta:
+        ordering = ['-updated']
+
 
 def messages_chasged(sender, **kwargs):    
     instance = kwargs.pop('instance', None)
@@ -57,5 +62,8 @@ def messages_chasged(sender, **kwargs):
 
     # Bsucar los enmsaje de false_pk_set que no estan y borralos
     pk_set.difference_update(false_pk_set)
+
+    # forzar la actualizacion haciendo save
+    instance.save()
 
 m2m_changed.connect(messages_chasged, sender=Thread.messages.through)
