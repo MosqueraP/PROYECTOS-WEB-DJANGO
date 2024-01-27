@@ -29,6 +29,5 @@ class ThreadDetail(DetailView):
         return obj
 
 def add_message(request, pk):
-    print(request.GET)
     Json_response = {'created': False}
     return JsonResponse(Json_response)
