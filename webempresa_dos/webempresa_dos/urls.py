@@ -31,7 +31,7 @@ urlpatterns = [
     path('accounts/', include('registration.urls')), # maneja las urls registrar
     path('profiles/', include(profiles_patterns)), #
     # path de messenger
-    path('messenger/', include(messenger_patterns)), #
+    path('messenger/', include(messenger_patterns)),
 ] 
 
 if settings.DEBUG:
